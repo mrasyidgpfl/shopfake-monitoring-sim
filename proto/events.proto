@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package shopfake;
+
+option go_package = "github.com/mrasyidgpfl/shopfake/proto/pb";
+
+service EventService {
+  rpc GetRegionStats(RegionStatsRequest) returns (RegionStatsResponse);
+  rpc GetEventCounts(EventCountsRequest) returns (EventCountsResponse);
+  rpc StreamEvents(StreamEventsRequest) returns (stream EventMessage);
+}
+
+message RegionStatsRequest {}
+
+message RegionStatsResponse {
+  repeated RegionStat stats = 1;
+}
+
+message RegionStat {
+  string region = 1;
+  int64 order_count = 2;
+  int64 failure_count = 3;
+  double revenue = 4;
+  double avg_latency_ms = 5;
+}
+
+message EventCountsRequest {}
+
+message EventCountsResponse {
+  map<string, int64> counts = 1;
+}
+
+message StreamEventsRequest {
+  string region = 1;
+}
+
+message EventMessage {
+  string id = 1;
+  string type = 2;
+  string region = 3;
+  string user_id = 4;
+  double amount = 5;
+  string currency = 6;
+  int64 timestamp = 7;
+}
