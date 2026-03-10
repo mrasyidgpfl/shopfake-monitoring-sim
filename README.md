@@ -14,7 +14,7 @@ Generates synthetic order, payment, and user events across 8 regions (ID, SG, MY
 │  Simulator   │────▶│ Kafka │────▶│  Processor   │──────▶│ PostgreSQL │
 │  (Go)        │     │       │     │  (Go)        │       │            │
 │  8 goroutines│     │       │     │  gRPC server │       │            │
-└──────┬───────┘     └───────┘     └──────┬───────┘       └────────────┘
+└──────┬───────┘     └───────┘     └───────┬───────┘       └────────────┘
        │                                   | 
        │ /metrics                          │ /metrics
        ▼                                   ▼
@@ -31,11 +31,11 @@ Generates synthetic order, payment, and user events across 8 regions (ID, SG, MY
 
 ## Services
 
-**event-simulator** — Spawns one goroutine per region generating weighted random e-commerce events (orders, payments, signups, vouchers) and publishes to Kafka. Messages keyed by region for partition-level ordering.
+**event-simulator** - Spawns one goroutine per region generating weighted random e-commerce events (orders, payments, signups, vouchers) and publishes to Kafka. Messages keyed by region for partition-level ordering.
 
-**event-processor** — Kafka consumer group that processes events and writes to PostgreSQL with idempotent upserts. Exposes a gRPC API for querying aggregated stats (region breakdown, event counts). Runs auto-migration on startup.
+**event-processor** - Kafka consumer group that processes events and writes to PostgreSQL with idempotent upserts. Exposes a gRPC API for querying aggregated stats (region breakdown, event counts). Runs auto-migration on startup.
 
-**api-gateway** — REST API that proxies requests to the processor via gRPC. Health endpoint for liveness checks. All three services instrumented with Prometheus metrics.
+**api-gateway** - REST API that proxies requests to the processor via gRPC. Health endpoint for liveness checks. All three services instrumented with Prometheus metrics.
 
 ## Tech Stack
 
@@ -58,7 +58,7 @@ Grafana login: admin / admin. Add Prometheus data source with URL `http://promet
 ```
 GET /health              — health check
 GET /api/stats/regions   — order counts, failure rates, revenue by region
-GET /api/stats/events    — event counts by type
+GET /api/stats/events    - event counts by type
 GET /metrics             — prometheus metrics
 ```
 
