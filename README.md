@@ -1,6 +1,6 @@
-# shopfake-monitoring-sim
+# marketplace-observability-sim
 
-Just a simple simulation of a large-scale e-commerce real-time monitoring system with Go, gRPC, Kafka, PostgreSQL, Prometheus, and Grafana, to demonstrate my previous job.
+Just a simple simulation of a large-scale e-commerce real-time monitoring system with Go, gRPC, Kafka, PostgreSQL, Prometheus, and Grafana.
 
 
 <p align="center">
@@ -13,7 +13,7 @@ Just a simple simulation of a large-scale e-commerce real-time monitoring system
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" />
 </p>
 
-Shopfake Monitoring Sim: E-commerce event monitoring system simulating multi-region marketplace traffic with real-time observability.
+marketplace-observability-sim: E-commerce event monitoring system simulating multi-region marketplace traffic with real-time observability.
 
 Generates synthetic order, payment, and user events across 8 regions (ID, SG, MY, TH, VN, PH, TW, BR), processes them through Kafka, stores in PostgreSQL, and exposes metrics via Prometheus and Grafana dashboards.
 
